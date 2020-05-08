@@ -1,0 +1,44 @@
+<div class="row big-banner" >
+  <div class="col-sm-2" >
+    <div >
+      <h2 style="color: burlywood;">Categories</h2>
+      <div class="list-group">
+      <div class="list-group-item">
+      <button type="button" class="btn btn-success btn-block" [routerLink]="'/all/'+indexForAll">All</button>
+      </div>
+      <div *ngIf="visible" >
+        <p><input class="form-control"  [(ngModel)]="newName"> 
+          <button type="button" class="btn btn-primary" [routerLink]="['/all']" (click)="saveNewCategoryName()">save</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/all']" (click)="cancelCategoryName()">Cancel</button>
+        
+        </p>
+      </div>
+        <div class="list-group-item" *ngFor="let category of notesCategory" style="background-image:url('assets/Images/div.jpg');">
+         <button [routerLink]="'/category/'+category.categoryId" type="button" class="btn btn-primary btn-block">{{category.categoryName}}</button>
+      <p>
+        <button type="button" class="btn btn-primary btn-sm" (click)="editFun(category.categoryId)">
+          <span class="glyphicon glyphicon-pencil"></span> 
+        </button>
+     
+    <button type="button" class="btn btn-primary btn-sm" style="margin-left:20px;" (click)="deletecategory(category.categoryId)">
+          <span class="glyphicon glyphicon-trash"></span></button>
+       </p>
+        </div>
+     
+      </div>
+<p style="text-align: center;"><button type="button" class="btn btn-primary btn-block" (click)="newCategoryName()">
+       <span class="glyphicon glyphicon-plus"></span>
+      </button></p>
+      <div *ngIf="Namevisible"> 
+        <p><input class="form-control"  [(ngModel)]="newCategory"> 
+          <button type="button" class="btn btn-primary" (click)="addNewCategory()">save</button>
+          <button type="button" class="btn btn-primary" (click)="cancelNewCategory()">Cancel</button>
+        </p>
+      </div>
+    </div>
+    </div>
+
+  <div class="col-sm-10">
+    <app-notes></app-notes>
+</div>
+</div>
