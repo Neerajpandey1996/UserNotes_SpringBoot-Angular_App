@@ -1,18 +1,12 @@
 package com.neeraj.UserNotesSpringBootApp.model;
 
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -22,9 +16,10 @@ public class NotesCategory
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotNull
 	private int categoryId;
 	
-	
+	@NotEmpty(message="Category Name Can not be Empty")
 	private String categoryName;
 
 	

@@ -1,8 +1,8 @@
 package com.neeraj.UserNotesSpringBootApp.model;
-
-import java.util.List;
-
-import javax.persistence.CascadeType;
+//
+//import java.util.List;
+//
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -20,12 +22,16 @@ public class Notes
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotNull
 	private int notesId;
 	
+	@NotEmpty(message="Title Can not be Empty" )
 	private String title;
 	
+	@NotEmpty(message="Discription Can not be Empty")
 	private String discription;
 	
+	@NotEmpty(message="Name can Not be Empty")
 	private String name;
 
 //	@ManyToOne(cascade=CascadeType.ALL)
